@@ -41,14 +41,12 @@ The policies is defined in the `cerbos/policies` directory. Each policy is autho
 - [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=remix_starter)
 - [Remix v1.x](https://remix.run/)
 - [React v18.x](https://reactjs.org/)
-- [Sass](https://sass-lang.com/) - Styling language
 
 ### Included Tooling
 
 - [TypeScript](https://www.typescriptlang.org/) - Type checking
 - [ESLint](https://eslint.org/) - Code linting
 - [Prettier](https://prettier.io/) - Code formatting
-- [Vite](https://vitejs.dev/) - Bundler
 
 ## How to Run the Example
 
@@ -74,14 +72,15 @@ If you have any trouble you can check out [Clerk](https://clerk.dev)'s documenta
 
 ### 3. Add your ENV variables to an `env.local` at the root of the project
 
-There are 2 environment variables from Clerk's SDK that need to be set for this demo to work.
+There are 3 environment variables from Clerk's SDK that need to be set for this demo to work.
 
-There is a `.env.local.example` file in the root of the project that you can copy and rename to `.env.local` and add your Clerk API keys to.
+There is a `.env.example` file in the root of the project that you can copy and rename to `.env` and add your Clerk API keys to.
 
 ```sh
 # .env.local
-PUBLIC_CLERK_FRONTEND_API=your-frontend-api
-CLERK_API_KEY=your-api-key
+PUBLIC_CLERK_FRONTEND_API=your-frontend-api-key
+CLERK_API_KEY=your-backend-api-key
+CLERK_JWT_KEY=your-clerk-jwt-verification key
 ```
 
 The Clerk API keys can be found at the [API Keys page](https://dashboard.clerk.dev/last-active?path=api-keys) in the Clerk dashboard.
@@ -128,13 +127,13 @@ This demo is how to use Clerk with Cerbos in a Remix application, so to start it
 npm run dev
 ```
 
-Which using `Vite` will start up a dev server which you can open in your browser.
+Which will start up a dev server which you can open in your browser.
 
-You could also `build` and `preview` the app to see what it would be like in production. Deployment of this app is out of scope for this example.
+You could also `npm run build` and `npm start` the app to see what it would be like in production. Deployment of this app is out of scope for this example.
 
 ### 6. Check out the example implementation
 
-- Open your browser to `http://localhost:5137` to see the included example code running.
+- Open your browser to `http://localhost:3000` to see the included example code running.
 
 There is a demonstration of changing the user's role, and seeing how that affects the permissions of the user to take actions on the resources.
 
