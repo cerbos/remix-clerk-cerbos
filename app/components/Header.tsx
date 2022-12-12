@@ -12,7 +12,7 @@ export default function Header() {
       </div>
       <div className="right">
         <SignedIn>
-          <UserButton signInUrl="/sign-in" />
+          <UserButton signInUrl="/sign-in" afterSignOutUrl="/" />
         </SignedIn>
         <SignedOut>
           <Link to="/sign-in">Sign in</Link>
