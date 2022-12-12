@@ -1,0 +1,236 @@
+h1 {
+  margin: 0;
+}
+
+section {
+  padding-top: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.description {
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  color: #808080;
+  text-align: center;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  height: 3.5rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1rem;
+}
+
+.example-links {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+}
+
+.example-links .card {
+  flex-basis: 50%;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  max-width: 90vw;
+  margin: 0 auto;
+  flex-grow: 1;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 800px;
+  padding-top: 2rem;
+  flex: 1;
+  margin: 0 auto;
+}
+
+.role-select {
+  width: 100%;
+  padding: 0.5em;
+  border: 2px solid #f2f2f2;
+  border-radius: 0.5em;
+  font-size: 1rem;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: transparent;
+  background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position-x: calc(100% - 5px);
+  background-position-y: 5px;
+  border: 1px solid #dfdfdf;
+  border-radius: 2px;
+  margin-right: 2rem;
+  padding: 1rem;
+  padding-right: 2rem;
+}
+
+a.docslink {
+  color: #335bf1;
+  font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  a.docslink {
+    padding-right: 28px;
+  }
+
+  a.docslink:hover,
+  a.docslink:focus {
+    background: url(/icons/external-link.svg) no-repeat right;
+    background-size: 20px 20px;
+  }
+
+  .docslink .linkText:hover {
+    border-bottom: 2px solid #335bf1;
+  }
+
+  main {
+    padding-top: 4.5rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.25rem;
+  }
+
+  .links {
+    padding-left: 28px;
+    flex-direction: row;
+    height: inherit;
+    margin-top: 4rem;
+  }
+}
+
+.card {
+  border: 2px solid #fff;
+  border-radius: 0.5em;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.card .card-content {
+  display: grid;
+  font-size: 1rem;
+  line-height: 1.25;
+  background: transparent;
+  border: none;
+  grid-template-columns: 24px 1fr 24px;
+  gap: 1em;
+  padding: 1.5em 1em;
+  text-align: left;
+  text-decoration: none;
+}
+
+.card .card-content p {
+  margin: 0;
+}
+
+.card.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.card.loading {
+  background-image: radial-gradient(circle 14px at 46px 46px, #f2f2f2 99%, transparent 0),
+    linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.5) 50%,
+      rgba(255, 255, 255, 0) 80%
+    ),
+    linear-gradient(#f2f2f2 16px, transparent 0), linear-gradient(#f2f2f2 16px, transparent 0),
+    linear-gradient(#f2f2f2 16px, transparent 0);
+
+  background-repeat: repeat-y;
+
+  background-size: 100px 200px, /* circle */ 50px 200px, /* highlight */ 150px 200px, 350px 200px,
+    200px 200px;
+
+  background-position: 0 0, /* circle */ 0 0, /* highlight */ 70px 36px, 70px 58px, 70px 80px;
+
+  animation: shine 1s infinite;
+}
+
+.card.loading > * {
+  visibility: hidden;
+}
+
+@keyframes shine {
+  to {
+    background-position: 0 0, 100% 0, 70px 36px, 70px 58px, 70px 80px;
+  }
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 1.5;
+}
+
+.card:hover h3 {
+  text-decoration: underline;
+}
+
+.card .action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.card .icon,
+.card .action {
+  padding-top: 0.2rem;
+}
+
+h4 i {
+  font-weight: normal;
+  margin-left: 0.5rem;
+}
+
+table {
+  width: 80%;
+  background: #f2f2f2;
+  padding: 0.2em;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+thead {
+  font-weight: 600;
+}
+
+.cards {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+@media screen and (min-width: 768px) {
+  .card {
+    border-color: #f2f2f2;
+  }
+
+  .card .card-content {
+    grid-template-columns: 24px 1fr 42px;
+    padding: 2em;
+    cursor: pointer;
+    font: inherit;
+  }
+}

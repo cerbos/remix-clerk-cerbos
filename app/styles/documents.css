@@ -1,0 +1,9 @@
+.document {
+  display: contents;
+}
+
+.document img {
+  display: block;
+  margin: 2rem auto;
+  width: 200px;
+}
