@@ -33,7 +33,7 @@ In this demo we use [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=
 
 Our [Remix](https://remix.run/) application will connect with Clerk for authentication and Cerbos for authorization, to decide what actions are available on which resources for a given user.
 
-The policies is defined in the `cerbos/policies` directory. Each policy is authored in the a very human-readable format which you can learn more about at the [Cerbos Policy documentation site](https://docs.cerbos.dev/cerbos/latest/policies), and for the demo revolves around access to a `contacts` resource.
+The policies is defined in the `cerbos/policies` directory. Each policy is authored in a very human-readable format which you can learn more about at the [Cerbos Policy documentation site](https://docs.cerbos.dev/cerbos/latest/policies), and for the demo revolves around access to a `contacts` resource.
 
 ### Tech Stack
 
@@ -68,7 +68,7 @@ _Alternatviely you could use `yarn` or `pnpm` or anything that runs `npm scripts
 
 Create a free account at https://clerk.dev and create a new **application** for `development`.
 
-If you have any trouble you can check out [Clerk](https://clerk.dev)'s documentation for [setting up you application.](https://clerk.dev/docs/authentication/set-up-your-application)
+If you have any trouble you can check out [Clerk](https://clerk.dev)'s documentation for [setting up your application.](https://clerk.dev/docs/authentication/set-up-your-application)
 
 ### 3. Add your ENV variables to an `env.local` at the root of the project
 
@@ -137,7 +137,7 @@ You could also `npm run build` and `npm start` the app to see what it would be l
 
 There is a demonstration of changing the user's role, and seeing how that affects the permissions of the user to take actions on the resources.
 
-_\*\*Note: If you are having trouble, trying running the example in incognito mode, some common browser extensions cause remix to fail in deev mode._\*\*
+_\*\*Note: If you are having trouble, try running the example in incognito mode, some common browser extensions cause Remix to fail in deev mode._\*\*
 
 ## Commands
 
