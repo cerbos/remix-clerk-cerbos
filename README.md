@@ -78,7 +78,7 @@ There is a `.env.example` file in the root of the project that you can copy and 
 
 ```sh
 # .env.local
-PUBLIC_CLERK_FRONTEND_API=your-frontend-api-key
+CLERK_FRONTEND_API=your-frontend-api-key
 CLERK_API_KEY=your-backend-api-key
 CLERK_JWT_KEY=your-clerk-jwt-verification key
 ```
