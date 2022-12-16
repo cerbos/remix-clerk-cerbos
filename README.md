@@ -137,6 +137,8 @@ You could also `npm run build` and `npm start` the app to see what it would be l
 
 There is a demonstration of changing the user's role, and seeing how that affects the permissions of the user to take actions on the resources.
 
+_\*\*Note: If you are having trouble, trying running the example in incognito mode, some common browser extensions cause remix to fail in deev mode._\*\*
+
 ## Commands
 
 - `npm run dev` - Starts the development server.
