@@ -6,20 +6,20 @@ The example features adding sign up, sign in, profile management, and an authent
 
 ## Table of Contents
 
-- [Cerbos, Remix and Clerk Example](#cerbos--remix-and-clerk-example)
-
+- [Cerbos, Remix and Clerk Example](#cerbos-remix-and-clerk-example)
+  - [Table of Contents](#table-of-contents)
   - [Overview](#overview)
     - [Tech Stack](#tech-stack)
     - [Included Tooling](#included-tooling)
   - [How to Run the Example](#how-to-run-the-example)
-
     - [1. Clone the repository and install the dependencies](#1-clone-the-repository-and-install-the-dependencies)
     - [2. Set up your Clerk account and project](#2-set-up-your-clerk-account-and-project)
     - [3. Add your ENV variables to an `env.local` at the root of the project](#3-add-your-env-variables-to-an-envlocal-at-the-root-of-the-project)
     - [4. Start Cerbos locally](#4-start-cerbos-locally)
+      - [Docker (recommended)](#docker-recommended)
+      - [Binary](#binary)
     - [5. Start the demo locally](#5-start-the-demo-locally)
     - [6. Check out the example implementation](#6-check-out-the-example-implementation)
-
   - [Commands](#commands)
   - [Learn More](#learn-more)
 
@@ -78,9 +78,8 @@ There is a `.env.example` file in the root of the project that you can copy and 
 
 ```sh
 # .env.local
-CLERK_FRONTEND_API=your-frontend-api-key
-CLERK_API_KEY=your-backend-api-key
-CLERK_JWT_KEY=your-clerk-jwt-verification key
+CLERK_PUBLISHABLE_KEY=your_key
+CLERK_SECRET_KEY=your_secret_key
 ```
 
 The Clerk API keys can be found at the [API Keys page](https://dashboard.clerk.dev/last-active?path=api-keys) in the Clerk dashboard.

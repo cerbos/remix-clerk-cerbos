@@ -2,12 +2,14 @@ import { json } from '@remix-run/node';
 import type { LoaderFunction } from '@remix-run/node';
 import { requireUser } from '~/utils/user';
 import { cerbos } from '~/utils/cerbos.server';
+import type { User } from '@clerk/remix/api.server';
 
 export let loader: LoaderFunction = async (args) => {
   const user = await requireUser(args);
   const roles = user.publicMetadata.role ? [user.publicMetadata.role as string] : [];
   const email =
-    user.emailAddresses.find((e) => e.id === user.primaryEmailAddressId)?.emailAddress ?? null;
+    user.emailAddresses.find((e: User) => e.id === user.primaryEmailAddressId)?.emailAddress ??
+    null;
 
   const cerbosPayload = {
     principal: {
