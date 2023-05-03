@@ -2,7 +2,7 @@ import { useLoaderData, useSubmit, useTransition } from '@remix-run/react';
 import { json } from '@remix-run/node';
 import type { ActionFunction, LinksFunction, LoaderFunction } from '@remix-run/node';
 import { getAuth } from '@clerk/remix/ssr.server';
-import { users } from '@clerk/remix/api.server';
+import { createClerkClient } from '@clerk/remix/api.server';
 import type { User } from '@clerk/remix/api.server';
 import { RoleSelect, DocsLink, Card, CerbosPolicy, APIRequest, GuardedRoutes } from '~/components';
 import { useClerk } from '@clerk/clerk-react';
@@ -21,7 +21,11 @@ export const loader: LoaderFunction = async (loaderArgs) => {
   const getResourcesSource = await getGetResourcesSource();
 
   const auth = await getAuth(loaderArgs);
-  const user = await (auth.userId ? users.getUser(auth.userId) : null);
+  const user = auth.userId
+    ? await createClerkClient({
+        apiKey: process.env.CLERK_SECRET_KEY,
+      }).users.getUser(auth.userId)
+    : null;
 
   return json({
     user,
@@ -39,7 +43,9 @@ export const action: ActionFunction = async (actionArgs) => {
   const formData = await actionArgs.request.formData();
   const role = formData.get('role') as string;
 
-  await users.updateUser(auth.userId, {
+  await createClerkClient({
+    apiKey: process.env.CLERK_SECRET_KEY,
+  }).users.updateUser(auth.userId, {
     publicMetadata: { role },
   });
   return null;

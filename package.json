@@ -8,12 +8,12 @@
     "format": "prettier --write ./app",
     "typecheck": "tsc -b",
     "cerbos": "cerbos server --config ./cerbos/config.yaml",
-    "cerbos:docker": "docker run --rm --name cerbos -it -v $(pwd)/cerbos/policies:/policies -p 3592:3592 -p 3593:3593  ghcr.io/cerbos/cerbos:0.22.0",
-    "cerbos:docker:win": "docker run --rm --name cerbos -it -v  %cd%/cerbos/policies:/policies -p 3592:3592 -p 3593:3593  ghcr.io/cerbos/cerbos:0.22.0"
+    "cerbos:docker": "docker run --rm --name cerbos -it -v $(pwd)/cerbos/policies:/policies -p 3592:3592 -p 3593:3593  ghcr.io/cerbos/cerbos:0.26.0",
+    "cerbos:docker:win": "docker run --rm --name cerbos -it -v  %cd%/cerbos/policies:/policies -p 3592:3592 -p 3593:3593  ghcr.io/cerbos/cerbos:0.26.0"
   },
   "dependencies": {
     "@cerbos/grpc": "^0.10.0",
-    "@clerk/remix": "^1.4.3",
+    "@clerk/remix": "^2.5.5",
     "@remix-run/node": "^1.8.2",
     "@remix-run/react": "^1.8.2",
     "@remix-run/serve": "^1.8.2",
@@ -30,7 +30,7 @@
     "@types/react": "^18.0.25",
     "@types/react-dom": "^18.0.8",
     "eslint": "^8.27.0",
-    "typescript": "^4.8.4"
+    "typescript": "^5.0.4"
   },
   "engines": {
     "node": ">=14"
