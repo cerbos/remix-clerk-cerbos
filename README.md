@@ -14,7 +14,7 @@ The example features adding sign up, sign in, profile management, and an authent
   - [How to Run the Example](#how-to-run-the-example)
     - [1. Clone the repository and install the dependencies](#1-clone-the-repository-and-install-the-dependencies)
     - [2. Set up your Clerk account and project](#2-set-up-your-clerk-account-and-project)
-    - [3. Add your ENV variables to an `env.local` at the root of the project](#3-add-your-env-variables-to-an-envlocal-at-the-root-of-the-project)
+    - [3. Add your ENV variables to an `.env` at the root of the project](#3-add-your-env-variables-to-an-envlocal-at-the-root-of-the-project)
     - [4. Start Cerbos locally](#4-start-cerbos-locally)
       - [Docker (recommended)](#docker-recommended)
       - [Binary](#binary)
@@ -70,14 +70,14 @@ Create a free account at https://clerk.dev and create a new **application** for 
 
 If you have any trouble you can check out [Clerk](https://clerk.dev)'s documentation for [setting up your application.](https://clerk.dev/docs/authentication/set-up-your-application)
 
-### 3. Add your ENV variables to an `env.local` at the root of the project
+### 3. Add your ENV variables to an `.env` at the root of the project
 
 There are 3 environment variables from Clerk's SDK that need to be set for this demo to work.
 
 There is a `.env.example` file in the root of the project that you can copy and rename to `.env` and add your Clerk API keys to.
 
 ```sh
-# .env.local
+# .env
 CLERK_PUBLISHABLE_KEY=your_key
 CLERK_SECRET_KEY=your_secret_key
 ```
