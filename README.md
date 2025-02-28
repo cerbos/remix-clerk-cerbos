@@ -1,6 +1,6 @@
 # Cerbos, Remix and Clerk Example
 
-This example shows how to use [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=remix_starter) with [Remix](https://cerbos.dev) in a [Remix](https://remix.run/) application.
+This example shows how to use [Clerk](https://www.clerk.dev/) with [Remix](https://cerbos.dev) in a [Remix](https://remix.run/) application.
 
 The example features adding sign up, sign in, profile management, and an authenticated API route to your Remix application, using **[Cerbos](https://cerbos.dev)** to authorize access.
 
@@ -29,7 +29,7 @@ The example features adding sign up, sign in, profile management, and an authent
 
 Cerbos works with any identity provider services like Auth0, Okta, FusionAuth, Clerk, Magic, WorkOS or even your own, bespoke directory system.
 
-In this demo we use [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=remix_starter) as the identity provider.
+In this demo we use [Clerk](https://www.clerk.dev/) as the identity provider.
 
 Our [Remix](https://remix.run/) application will connect with Clerk for authentication and Cerbos for authorization, to decide what actions are available on which resources for a given user.
 
@@ -38,7 +38,7 @@ The policies is defined in the `cerbos/policies` directory. Each policy is autho
 ### Tech Stack
 
 - [Cerbos](https://cerbos.dev)
-- [Clerk](https://www.clerk.dev/?utm_source=github&utm_medium=starter_repos&utm_campaign=remix_starter)
+- [Clerk](https://www.clerk.dev/)
 - [Remix v1.x](https://remix.run/)
 - [React v18.x](https://reactjs.org/)
 
@@ -72,7 +72,7 @@ If you have any trouble you can check out [Clerk](https://clerk.dev)'s documenta
 
 ### 3. Add your ENV variables to an `.env` at the root of the project
 
-There are 3 environment variables from Clerk's SDK that need to be set for this demo to work.
+There are 2 environment variables from Clerk's SDK that need to be set for this demo to work.
 
 There is a `.env.example` file in the root of the project that you can copy and rename to `.env` and add your Clerk API keys to.
 
@@ -136,7 +136,7 @@ You could also `npm run build` and `npm start` the app to see what it would be l
 
 There is a demonstration of changing the user's role, and seeing how that affects the permissions of the user to take actions on the resources.
 
-_\*\*Note: If you are having trouble, try running the example in incognito mode, some common browser extensions cause Remix to fail in deev mode._\*\*
+_\*\*Note: If you are having trouble, try running the example in incognito mode, some common browser extensions cause Remix to fail in dev mode._\*\*
 
 ## Commands
 
