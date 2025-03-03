@@ -1,5 +1,4 @@
-import { useLoaderData, useSubmit, useTransition } from '@remix-run/react';
-import { json } from '@remix-run/node';
+import { useLoaderData, useSubmit, useNavigation } from '@remix-run/react';
 import type { ActionFunction, LinksFunction, LoaderFunction } from '@remix-run/node';
 import { getAuth } from '@clerk/remix/ssr.server';
 import { createClerkClient } from '@clerk/remix/api.server';
@@ -23,11 +22,11 @@ export const loader: LoaderFunction = async (loaderArgs) => {
   const auth = await getAuth(loaderArgs);
   const user = auth.userId
     ? await createClerkClient({
-        apiKey: process.env.CLERK_SECRET_KEY,
+        secretKey: process.env.CLERK_SECRET_KEY,
       }).users.getUser(auth.userId)
     : null;
 
-  return json({
+  return Response.json({
     user,
     policySource,
     getResourcesSource,
@@ -44,7 +43,7 @@ export const action: ActionFunction = async (actionArgs) => {
   const role = formData.get('role') as string;
 
   await createClerkClient({
-    apiKey: process.env.CLERK_SECRET_KEY,
+    secretKey: process.env.CLERK_SECRET_KEY,
   }).users.updateUser(auth.userId, {
     publicMetadata: { role },
   });
@@ -61,7 +60,8 @@ export default function Index() {
   const clerk = useClerk();
 
   const submit = useSubmit();
-  const transition = useTransition();
+  const transition = useNavigation();
+  const isLoading = transition.state !== 'idle';
 
   return (
     <>
@@ -76,7 +76,7 @@ export default function Index() {
             <RoleSelect
               role={role}
               onRoleChange={(event) => submit(event.currentTarget.form, { replace: true })}
-              loading={transition.state !== 'idle'}
+              loading={isLoading}
             />
           </section>
 

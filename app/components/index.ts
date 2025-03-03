@@ -7,6 +7,7 @@ import CerbosPolicy from './CerbosPolicy';
 import Prism from './Prism';
 import APIRequest from './APIRequest';
 import GuardedRoutes from './GuardedRoutes';
+import { CatchBoundary } from './CatchBoundary';
 
 export {
   Header,
@@ -18,4 +19,5 @@ export {
   Prism,
   APIRequest,
   GuardedRoutes,
+  CatchBoundary,
 };
