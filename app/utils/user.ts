@@ -9,7 +9,7 @@ export const requireUser = async (args: Parameters<LoaderFunction>[0]) => {
   }
 
   return await createClerkClient({
-    apiKey: process.env.CLERK_SECRET_KEY,
-  }).users.getUser(auth.userId)
+    secretKey: process.env.CLERK_SECRET_KEY,
+  }).users.getUser(auth.userId);
 
 };

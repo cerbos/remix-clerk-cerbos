@@ -1,8 +1,8 @@
-import { useLoaderData, useCatch } from '@remix-run/react';
-import { json } from '@remix-run/node';
+import { useLoaderData } from '@remix-run/react';
+import { data } from '@remix-run/node';
 import type { LoaderFunction, LinksFunction } from '@remix-run/node';
 import documentsStylesheetUrl from '~/styles/documents.css';
-import { Prism } from '~/components';
+import { Prism, CatchBoundary } from '~/components';
 import { getDocumentById, getDocumentAttributesById } from '~/db';
 import { requireUser } from '~/utils/user';
 import { cerbos } from '~/utils/cerbos.server';
@@ -16,9 +16,9 @@ export let loader: LoaderFunction = async (args) => {
   // cerbos requires an array of `roles` so we just wrap `role` in an array
   const roles = user.publicMetadata.role ? [user.publicMetadata.role as string] : [];
   const { params } = args;
-
+console.log({user : user.publicMetadata});
   if (!params.id) {
-    throw json('Document ID required', { status: 400 });
+    throw data({ error: 'Document ID required' }, { status: 400 });
   }
 
   // query for the minimal infomation needed to pass to cerbos for an authorization check
@@ -26,7 +26,7 @@ export let loader: LoaderFunction = async (args) => {
 
   // if we can't find a document matching the route param id, throw a 404
   if (!documentAttrs) {
-    throw json('Not Found', { status: 404 });
+    throw data({ error: 'Not Found' }, { status: 404 });
   }
 
   // ** fake the ownership of the document for the purposes of this demo **
@@ -45,13 +45,13 @@ export let loader: LoaderFunction = async (args) => {
   });
 
   if (!isAllowed) {
-    throw json('Forbidden', { status: 403 });
+    throw data({ error: 'Forbidden' }, { status: 403 });
   }
 
   // get the full document for the page
   const document = await getDocumentById(params.id);
 
-  return json(document);
+  return data(document);
 };
 
 export const links: LinksFunction = () => {
@@ -118,19 +118,3 @@ export default function DocumentRoute() {
     </div>
   );
 }
-
-export const CatchBoundary = () => {
-  const caught = useCatch();
-  if (caught.status) {
-    return (
-      <main>
-        <h1>{caught.status}</h1> <pre>{caught.data}</pre>
-      </main>
-    );
-  }
-  return (
-    <main>
-      <h1>🤷‍♂️</h1> <pre>Something went wrong!</pre>
-    </main>
-  );
-};
