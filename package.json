@@ -13,7 +13,7 @@
   },
   "dependencies": {
     "@cerbos/grpc": "^0.20.0",
-    "@clerk/remix": "^2.5.5",
+    "@clerk/remix": "^4.0.0",
     "@remix-run/node": "^1.8.2",
     "@remix-run/react": "^1.8.2",
     "@remix-run/serve": "^1.8.2",
