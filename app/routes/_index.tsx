@@ -1,10 +1,10 @@
 import { useLoaderData, useSubmit, useNavigation } from '@remix-run/react';
 import type { ActionFunction, LinksFunction, LoaderFunction } from '@remix-run/node';
+import { json } from '@remix-run/node'; // <-- add this import
 import { getAuth } from '@clerk/remix/ssr.server';
 import { createClerkClient } from '@clerk/remix/api.server';
 import type { User } from '@clerk/remix/api.server';
 import { RoleSelect, DocsLink, Card, CerbosPolicy, APIRequest, GuardedRoutes } from '~/components';
-import { useClerk } from '@clerk/clerk-react';
 import { getGetResourcesSource, getPolicySource } from '~/utils/source-loader.server';
 
 import indexStylesheetUrl from '~/styles/index.css';
@@ -26,7 +26,7 @@ export const loader: LoaderFunction = async (loaderArgs) => {
       }).users.getUser(auth.userId)
     : null;
 
-  return Response.json({
+  return json({
     user,
     policySource,
     getResourcesSource,
@@ -57,7 +57,6 @@ export const links: LinksFunction = () => {
 export default function Index() {
   const { user, policySource, getResourcesSource } = useLoaderData() as LoaderData;
   const role = user?.publicMetadata?.role as string | undefined;
-  const clerk = useClerk();
 
   const submit = useSubmit();
   const transition = useNavigation();
@@ -100,7 +99,6 @@ export default function Index() {
           <Card
             title="Log in/Sign up for an account"
             href="/sign-up"
-            loading={!clerk}
             icon={<img slot="icon" src="/icons/user-plus.svg" alt="" />}
             action={<img slot="action" src="/icons/arrow-right.svg" alt="" />}
           >
@@ -134,7 +132,6 @@ export default function Index() {
               action={<img slot="action" src="/icons/arrow-right.svg" alt="" />}
               onClick={(ev) => {
                 ev.preventDefault();
-                clerk.openUserProfile({});
               }}
             >
               <p>
