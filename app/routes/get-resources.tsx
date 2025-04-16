@@ -1,4 +1,3 @@
-import { data } from '@remix-run/node';
 import type { LoaderFunction } from '@remix-run/node';
 import { requireUser } from '~/utils/user';
 import { cerbos } from '~/utils/cerbos.server';
@@ -58,5 +57,5 @@ export let loader: LoaderFunction = async (args) => {
   // }
 
   // return the payload for demo purposes
-  return data(result);
+  return result;
 };

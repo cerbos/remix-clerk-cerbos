@@ -51,7 +51,7 @@ console.log({user : user.publicMetadata});
   // get the full document for the page
   const document = await getDocumentById(params.id);
 
-  return data(document);
+  return document;
 };
 
 export const links: LinksFunction = () => {

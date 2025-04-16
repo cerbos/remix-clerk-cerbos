@@ -1,6 +1,5 @@
 import { useLoaderData, useSubmit, useNavigation } from '@remix-run/react';
 import type { ActionFunction, LinksFunction, LoaderFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
 import { getAuth } from '@clerk/remix/ssr.server';
 import { createClerkClient } from '@clerk/remix/api.server';
 import type { User } from '@clerk/remix/api.server';
@@ -25,11 +24,11 @@ export const loader: LoaderFunction = async (loaderArgs) => {
       }).users.getUser(auth.userId)
     : null;
 
-  return json({
+  return {
     user,
     policySource,
     getResourcesSource,
-  });
+  };
 };
 
 export const action: ActionFunction = async (actionArgs) => {
