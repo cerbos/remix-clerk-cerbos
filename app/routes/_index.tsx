@@ -1,13 +1,12 @@
 import { useLoaderData, useSubmit, useNavigation } from '@remix-run/react';
 import type { ActionFunction, LinksFunction, LoaderFunction } from '@remix-run/node';
-import { json } from '@remix-run/node'; // <-- add this import
+import { json } from '@remix-run/node';
 import { getAuth } from '@clerk/remix/ssr.server';
 import { createClerkClient } from '@clerk/remix/api.server';
 import type { User } from '@clerk/remix/api.server';
 import { RoleSelect, DocsLink, Card, CerbosPolicy, APIRequest, GuardedRoutes } from '~/components';
 import { getGetResourcesSource, getPolicySource } from '~/utils/source-loader.server';
 import indexStylesheetUrl from '~/styles/index.css';
-import Clerk from '@clerk/remix';
 
 interface LoaderData {
   user: User;
