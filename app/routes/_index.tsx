@@ -6,8 +6,8 @@ import { createClerkClient } from '@clerk/remix/api.server';
 import type { User } from '@clerk/remix/api.server';
 import { RoleSelect, DocsLink, Card, CerbosPolicy, APIRequest, GuardedRoutes } from '~/components';
 import { getGetResourcesSource, getPolicySource } from '~/utils/source-loader.server';
-
 import indexStylesheetUrl from '~/styles/index.css';
+import Clerk from '@clerk/remix';
 
 interface LoaderData {
   user: User;
@@ -129,14 +129,11 @@ export default function Index() {
             <Card
               title="Manage your Clerk user profile"
               icon={<img slot="icon" src="/icons/layout.svg" alt="" />}
-              action={<img slot="action" src="/icons/arrow-right.svg" alt="" />}
-              onClick={(ev) => {
-                ev.preventDefault();
-              }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               <p>
-                Interact with the user button, user profile, and more to preview what your users
-                will see
+                You can manage your account by clicking the profile icon in the top-right corner of
+                the page.
               </p>
             </Card>
           </section>
