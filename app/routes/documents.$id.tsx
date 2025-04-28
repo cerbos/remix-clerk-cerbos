@@ -16,7 +16,6 @@ export let loader: LoaderFunction = async (args) => {
   // cerbos requires an array of `roles` so we just wrap `role` in an array
   const roles = user.publicMetadata.role ? [user.publicMetadata.role as string] : [];
   const { params } = args;
-console.log({user : user.publicMetadata});
   if (!params.id) {
     throw data({ error: 'Document ID required' }, { status: 400 });
   }
