@@ -1,13 +1,10 @@
-import { useLoaderData, useSubmit, useTransition } from '@remix-run/react';
-import { json } from '@remix-run/node';
+import { useLoaderData, useSubmit, useNavigation } from '@remix-run/react';
 import type { ActionFunction, LinksFunction, LoaderFunction } from '@remix-run/node';
 import { getAuth } from '@clerk/remix/ssr.server';
 import { createClerkClient } from '@clerk/remix/api.server';
 import type { User } from '@clerk/remix/api.server';
 import { RoleSelect, DocsLink, Card, CerbosPolicy, APIRequest, GuardedRoutes } from '~/components';
-import { useClerk } from '@clerk/clerk-react';
 import { getGetResourcesSource, getPolicySource } from '~/utils/source-loader.server';
-
 import indexStylesheetUrl from '~/styles/index.css';
 
 interface LoaderData {
@@ -23,15 +20,15 @@ export const loader: LoaderFunction = async (loaderArgs) => {
   const auth = await getAuth(loaderArgs);
   const user = auth.userId
     ? await createClerkClient({
-        apiKey: process.env.CLERK_SECRET_KEY,
+        secretKey: process.env.CLERK_SECRET_KEY,
       }).users.getUser(auth.userId)
     : null;
 
-  return json({
+  return {
     user,
     policySource,
     getResourcesSource,
-  });
+  };
 };
 
 export const action: ActionFunction = async (actionArgs) => {
@@ -44,7 +41,7 @@ export const action: ActionFunction = async (actionArgs) => {
   const role = formData.get('role') as string;
 
   await createClerkClient({
-    apiKey: process.env.CLERK_SECRET_KEY,
+    secretKey: process.env.CLERK_SECRET_KEY,
   }).users.updateUser(auth.userId, {
     publicMetadata: { role },
   });
@@ -58,10 +55,10 @@ export const links: LinksFunction = () => {
 export default function Index() {
   const { user, policySource, getResourcesSource } = useLoaderData() as LoaderData;
   const role = user?.publicMetadata?.role as string | undefined;
-  const clerk = useClerk();
 
   const submit = useSubmit();
-  const transition = useTransition();
+  const transition = useNavigation();
+  const isLoading = transition.state !== 'idle';
 
   return (
     <>
@@ -76,7 +73,7 @@ export default function Index() {
             <RoleSelect
               role={role}
               onRoleChange={(event) => submit(event.currentTarget.form, { replace: true })}
-              loading={transition.state !== 'idle'}
+              loading={isLoading}
             />
           </section>
 
@@ -100,7 +97,6 @@ export default function Index() {
           <Card
             title="Log in/Sign up for an account"
             href="/sign-up"
-            loading={!clerk}
             icon={<img slot="icon" src="/icons/user-plus.svg" alt="" />}
             action={<img slot="action" src="/icons/arrow-right.svg" alt="" />}
           >
@@ -131,15 +127,11 @@ export default function Index() {
             <Card
               title="Manage your Clerk user profile"
               icon={<img slot="icon" src="/icons/layout.svg" alt="" />}
-              action={<img slot="action" src="/icons/arrow-right.svg" alt="" />}
-              onClick={(ev) => {
-                ev.preventDefault();
-                clerk.openUserProfile({});
-              }}
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
             >
               <p>
-                Interact with the user button, user profile, and more to preview what your users
-                will see
+                You can manage your account by clicking the profile icon in the top-right corner of
+                the page.
               </p>
             </Card>
           </section>

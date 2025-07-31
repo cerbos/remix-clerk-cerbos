@@ -1,6 +1,6 @@
 import PrismModule from 'prismjs';
-import 'prismjs/components/prism-yaml';
-import 'prismjs/components/prism-json';
+import 'prismjs/components/prism-yaml.js';
+import 'prismjs/components/prism-json.js';
 
 export default function Prism({
   source = `console.log('Hello world')`,
