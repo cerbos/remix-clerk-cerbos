@@ -12,7 +12,7 @@
     "cerbos:docker:win": "docker run --rm --name cerbos -it -v  %cd%/cerbos/policies:/policies -p 3592:3592 -p 3593:3593  ghcr.io/cerbos/cerbos:0.26.0"
   },
   "dependencies": {
-    "@cerbos/grpc": "^0.21.0",
+    "@cerbos/grpc": "^0.22.0",
     "@clerk/remix": "^4.5.0",
     "@remix-run/node": "^2.15.3",
     "@remix-run/react": "^2.15.3",
